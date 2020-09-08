@@ -1,0 +1,4 @@
+Testes Funcionais
+Os testes funcionais verificam a exatidão de um recurso em particular, comparando os resultados de uma determinada entrada com a especificação. Os testes funcionais não se preocupam com resultados intermediários ou efeitos colaterais, apenas o resultado.
+Teste de Integração
+Exercitam um serviço completo, isto é, uma funcionalidadede maior granularidade do sistema, envolvem mais classes ou pacotes distintos, envolvem dependências e sistemas reais, como bancos de dados e serviços remotos.
