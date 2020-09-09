@@ -9,5 +9,6 @@ class HomePageTest(TestCase):
         any(row.text == '1: Estudar testes funcionais' for row in rows),
         "New to-do item did not appear in table")
 def test_can_save_a_POST_request(self):
-    response = self.client.post('/', data={'item_text': 'A new list item'})
-    self.assertIn('A new list item', response.content.decode())
+   response = self.client.post('/', data={'item_text': 'A new list item'})
+   self.assertIn('A new list item', response.content.decode())
+   self.assertTemplateUsed(response, 'home.html')
