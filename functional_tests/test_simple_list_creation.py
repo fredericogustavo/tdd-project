@@ -1,34 +1,10 @@
-from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from .base import FunctionalTest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import WebDriverException
-import time
-import unittest
 
-MAX_WAIT = 5
 
-class NewVisitorTest(StaticLiveServerTestCase):
-    def setUp(self):
-        self.browser = webdriver.Firefox()
-    def wait_for_row_in_list_table(self, row_text):
-        start_time = time.time()
-        while True:  
-            try:
-                table = self.browser.find_element_by_id('id_list_table')  
-                rows = table.find_elements_by_tag_name('tr')
-                self.assertIn(row_text, [row.text for row in rows])
-                return  
-            except (AssertionError, WebDriverException) as e:  
-                if time.time() - start_time > MAX_WAIT:  
-                    raise e  
-                time.sleep(0.5)		
 
-    def setUp(self):
-        self.browser = webdriver.Firefox()
-
-    def tearDown(self):
-        self.browser.quit()
-
+class NewVisitorTest(FunctionalTest):
     def test_can_start_a_list_for_one_user(self): 
     
         # Maria decidiu utilizar o novo app TODO. Ela entra em sua página principal:
@@ -106,8 +82,9 @@ class NewVisitorTest(StaticLiveServerTestCase):
         self.assertNotIn('Estudar testes funcionais', page_text)
         self.assertIn('Comprar leite', page_text)
 
-        # Satisfeitos, ambos vão dormir		
+        # Satisfeitos, ambos vão dormir	
 
+class LayoutAndStylingTest(FunctionalTest):	
     def test_layout_and_styling(self):
         # Edith entra na home page
         self.browser.get(self.live_server_url)
