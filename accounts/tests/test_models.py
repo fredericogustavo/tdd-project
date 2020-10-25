@@ -19,4 +19,4 @@ class TokenModelTest(TestCase):
     def test_links_user_with_auto_generated_uid(self):
         token1 = Token.objects.create(email='a@b.com')
         token2 = Token.objects.create(email='a@b.com')
-        self.assertNotEqual(token1.uid, token2.uid)		
+        self.assertNotEqual(token1.uid, token2.uid)

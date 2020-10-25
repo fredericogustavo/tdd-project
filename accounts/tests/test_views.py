@@ -11,6 +11,7 @@ class SendLoginEmailViewTest(TestCase):
         self.assertRedirects(response, '/')
 
     def test_sends_mail_to_address_from_post(self):
+        self.send_mail_called = False
     @patch('accounts.views.send_mail')
     def test_sends_mail_to_address_from_post(self, mock_send_mail):
         self.client.post('/accounts/send_login_email', data={
@@ -39,4 +40,4 @@ class SendLoginEmailViewTest(TestCase):
         self.assertTrue(self.send_mail_called)
         self.assertEqual(self.subject, 'Your login link for Superlists')
         self.assertEqual(self.from_email, 'noreply@superlists')
-        self.assertEqual(self.to_list, ['edith@example.com'])		
+        self.assertEqual(self.to_list, ['edith@example.com'])	
