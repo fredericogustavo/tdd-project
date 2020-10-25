@@ -5,9 +5,7 @@ from unittest.mock import patch, call
 class SendLoginEmailViewTest(TestCase):
 
     def test_redirects_to_home_page(self):
-        response = self.client.post('/accounts/send_login_email', data={
-            'email': 'edith@example.com'
-        })
+        response = self.client.get('/accounts/login?token=abcd123')
         self.assertRedirects(response, '/')
 
     def test_sends_mail_to_address_from_post(self):
